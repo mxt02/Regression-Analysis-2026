@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
 import numpy as np
 
 class AnalyticalOLS:
+    """解析解线性回归"""
     def __init__(self):
         self.coef_ = None
 
@@ -17,13 +19,14 @@ class AnalyticalOLS:
         y_pred = self.predict(X)
         ss_res = np.sum((y - y_pred) ** 2)
         ss_tot = np.sum((y - np.mean(y)) ** 2)
-        return 1 - (ss_res / ss_tot) if ss_tot != 0 else 0
+        return 1 - (ss_res / ss_tot)
 
 class GradientDescentOLS:
+    """梯度下降线性回归"""
     def __init__(
         self,
         learning_rate=0.01,
-        tol=1e-5,
+        tol=1e-6,
         max_iter=1000,
         gd_type="full_batch",
         batch_fraction=0.2
